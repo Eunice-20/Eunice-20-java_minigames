@@ -1,4 +1,4 @@
-package Jeux7;
+package Jeux8;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
