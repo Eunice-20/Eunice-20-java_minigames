@@ -47,6 +47,7 @@ public class Snake extends JPanel implements KeyListener {
         direction = 'R';
         running = true;
         score = 0;
+        repaint();
         new Thread(this::gameLoop).start();
     }
 
@@ -121,9 +122,14 @@ public class Snake extends JPanel implements KeyListener {
 
     private void gameOver() {
         running = false;
-        JOptionPane.showMessageDialog(this, "Game Over! Score: " + score);
-        startGame();
+        int choice = JOptionPane.showConfirmDialog(this, "Game Over! Score: " + score + "\nVoulez-vous rejouer ?", "Fin de la partie", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            startGame();
+        } else {
+            System.exit(0);
+        }
     }
+    
 
     @Override
     protected void paintComponent(Graphics g) {
