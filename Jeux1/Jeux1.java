@@ -86,4 +86,10 @@ public class Jeux1 {
             }
         });
     }
+
+    private static void addActionListener(ActionListener actionListener) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
+    }
 }
+
