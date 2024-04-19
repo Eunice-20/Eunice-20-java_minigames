@@ -32,14 +32,14 @@ public class Jeux1 {
         panel.add(leave);
         panel.add(btnD);
 
-        frame.setLayout(new GridLayout(3, 1)); // Utilisation d'une grille 3x1
+        frame.setLayout(new GridLayout(3, 1));
         btnD.setBackground(Color.PINK);
 
         frame.add(label);
         frame.add(panel);
 
         frame.pack();
-        frame.setSize(300, 300); // Réglage de la taille du cadre
+        frame.setSize(300, 300); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
@@ -86,4 +86,9 @@ public class Jeux1 {
             }
         });
     }
+
+    private static void addActionListener(ActionListener actionListener) {
+        throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
+    }
 }
+
