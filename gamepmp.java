@@ -39,30 +39,33 @@ public static int devine = (int)(Math.random() * 1000);
 
         System.out.println(devine);
         
-        label = new JLabel("Devine a quelle nombre je pense.", JLabel.CENTER);
+        //label = new JLabel("Plus ton score est bas, mieux c'est.", JLabel.CENTER);
 
-        label2 = new JLabel("Plus ton score est bas, mieux c'est.");
-        frame.add(label);
+        label2 = new JLabel("Devine a quelle nombre je pense.", JLabel.CENTER);
+        //frame.add(label);
         frame.add(label2);
+
         JPanel panel = new JPanel();
         
-        nbj = new JTextField(4);
+        nbj = new JTextField(10);
         JButton valide = new JButton("valide");
 
         panel.add(valide);
         valide.addActionListener(new gamepmp());
         panel.add(nbj);
 
-        frame.setLayout(new GridLayout(2, 1));
+        frame.setLayout(new GridLayout(2, 2));
 
-        frame.add(label);
+        frame.add(label2);
         frame.add(panel);
          
+        frame.setBackground(Color.white);
+
         frame.pack();
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
+        label.setOpaque(true);
     }
     public void actionPerformed(ActionEvent e) {
         System.out.println("Le bouton a été cliqué !");
