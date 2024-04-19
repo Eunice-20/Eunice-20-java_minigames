@@ -1,108 +1,114 @@
 package Jeux_Java;
-import javax.swing.*;
-import java.awt.*;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-  
+import java.util.Scanner;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
-
-public class gamepmp implements ActionListener {
+public class gamepmp extends JFrame implements ActionListener {
 
 public static String file = "score.txt"; 
 
 public static JTextField nbj;
 
+public static JButton valide;
+
 public static JLabel label;
 
 public static JLabel label2;
 
- public static int tenta = 0;
+public static int tenta = 0;
 
 public static int niv = 1;
 
 public static int devine = (int)(Math.random() * 1000);
 
+public static ImageIcon haut = new ImageIcon("./asset/haut.png");
 
+public static ImageIcon bas = new ImageIcon("./asset/bas.png");
+public static void main(String[] args) 
+   {
+        Scanner myObj = new Scanner(System.in);
+        label = new JLabel();
+        label.setText("Devine a quelle nombre je pense.");
+        label.setBounds(20, 00, 400, 100);
+        label2 = new JLabel();
+        label2.setText("Plus ton score est bas, mieux c'est.");
+        label2.setBounds(20, 50, 400, 50);
 
-
-    public static void main(String[] args) 
-        {
-            JFrame frame = new JFrame("+ ou -");
-
-            System.out.println(devine);
-            
-            label = new JLabel("Devine a quelle nombre je pense.", JLabel.CENTER);
-
-            label2 = new JLabel("Plus ton score est bas, mieux c'est.");
-            frame.add(label);
-            frame.add(label2);
-            JPanel panel = new JPanel();
-            
-            nbj = new JTextField(4);
-            JButton valide = new JButton("valide");
-
-            panel.add(valide);
-            valide.addActionListener(new gamepmp());
-            panel.add(nbj);
-
-            frame.setLayout(new GridLayout(2, 1));
-
-            frame.add(label);
-            frame.add(panel);
-            
-            frame.pack();
-            frame.setSize(500, 500);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-
-        }
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Le bouton a été cliqué !");
+        JFrame frame = new JFrame("+ ou -");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(250, 250);
+        frame.setLayout(null);
+        frame.add(label);
+        frame.add(label2);
         
-            String s = e.getActionCommand();
-            if (s.equals("valide")) {
+        System.out.println(devine);
         
+        valide = new JButton();
+        valide.setBounds(35, 100, 50, 25);
+        valide.addActionListener(new gamepmp());
+
+        nbj = new JTextField();
+        nbj.setBounds(85, 100, 100, 25);
+        
+        frame.add(valide);
+        frame.add(nbj);
+        //frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+
+    }
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==valide) {
             int devi=Integer.parseInt(nbj.getText());
-
-                System.out.print(nbj.getText());
-        
-                if(devi < devine)
-                {
+            System.out.println(devi);
+            if(devi < devine) {
                 label.setText("C'est plus.");
+                label.setIcon(haut);
                 label2.setText("");
                 tenta ++;
-                }
-                else if(devi > devine)
-                {
-                label.setText("C'est moin.");
+            }
+            else if(devi > devine) {
+                label.setText("C'est moins.");
+                label.setIcon(bas);
                 label2.setText("");
                 tenta ++;
-                }
-                else
-                {
+            }
+            else {
                 tenta ++;
                 niv ++;
-                label.setText("C'est juste.\n ton score est de :" + tenta);
+                label.setText("C'est juste. ton score est de :" + tenta);
+                label.setIcon(null);
                 label2.setText("Tu passe niveau " + niv);
                 devine = (int)(Math.random() * 1000);
                 System.out.println(devine);
-                /*     new FileWriter(file);
-                    File myObj = new File(file);  
-                    if (myObj.createNewFile()) {  
-                    System.out.println("File created: " + myObj.getName());  
-                    } else {  
-                    System.out.println("File already exists.");  
-                    }
-                    FileWriter fileWriter = new FileWriter(file);
-                    PrintWriter printWriter = new PrintWriter(fileWriter);
-                    printWriter.printf("Product name is %s and its price is %d $", "iPhone", 1000);
-                printWriter.close();
-                */
             }
             nbj.setText("");
         }
+    }  
+}
+    
+        //String s = e.getActionCommand();
+        //if (s.equals("valide")) {
 
-        }  
-    }
+        //     System.out.print(nbj.getText());
+    
+        //         new FileWriter(file);
+        //         File myObj = new File(file);  
+        //         if (myObj.createNewFile()) {  
+        //         System.out.println("File created: " + myObj.getName());  
+        //         } else {  
+        //         System.out.println("File already exists.");  
+        //         }
+        //         FileWriter fileWriter = new FileWriter(file);
+        //         PrintWriter printWriter = new PrintWriter(fileWriter);
+        //         printWriter.printf("Product name is %s and its price is %d $", "iPhone", 1000);
+        //     printWriter.close();
+            
+        // }
+        // 
+

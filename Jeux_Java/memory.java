@@ -1,4 +1,4 @@
-package memory;
+package Jeux_Java;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ public class memory extends JPanel implements ActionListener
     public memory()
     {
         //ImageIcon obj = new ImageIcon("memory/tapis.jpg");
-        Bg = Toolkit.getDefaultToolkit().createImage("memory/tapis.jpg");
+        Bg = Toolkit.getDefaultToolkit().createImage("./asset/tapis.jpg");
     }
     
     public static void main(String[] args)
@@ -80,9 +80,10 @@ public class memory extends JPanel implements ActionListener
         turn +=1;
         if(turn == 2) 
         {
-        turn = 0;
-        frame.add((un));
-        
+            turn = 0;
+            frame.add((un));
+            
+            }
         }
     }
-}
+    
