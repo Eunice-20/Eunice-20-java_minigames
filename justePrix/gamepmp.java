@@ -43,6 +43,7 @@ public static ImageIcon haut = new ImageIcon("justePrix/haut.png");
 public static ImageIcon bas = new ImageIcon("justePrix/bas.png");
 public static void main(String[] args) 
    {
+        Scanner myObj = new Scanner(System.in);
         label = new JLabel();
         label.setText("Devine a quelle nombre je pense.");
         label.setBounds(20, 00, 400, 100);
