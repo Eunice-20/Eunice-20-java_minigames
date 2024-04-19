@@ -1,5 +1,4 @@
-package Jeux7;
-
+package Jeux_Java;
 public abstract class JeuxNub {
     
 }

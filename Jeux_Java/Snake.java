@@ -1,4 +1,4 @@
-package Jeux8;
+package Jeux_Java;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +22,9 @@ public class Snake extends JPanel implements KeyListener {
             SwingUtilities.invokeLater(() -> {
                 JFrame frame = new JFrame("Snake Game");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                ImageIcon img = new ImageIcon("./asset/Snake_Game.png");
+                Image icon = img.getImage();
+                frame.setIconImage(icon);
                 frame.getContentPane().add(new Snake());
                 frame.pack();
                 frame.setLocationRelativeTo(null);
@@ -31,13 +34,14 @@ public class Snake extends JPanel implements KeyListener {
             System.exit(0);
         }
     }
-
     public Snake() {
         setPreferredSize(new Dimension( board_size * unit_size,  board_size * unit_size));
         setBackground(Color.WHITE);
         setFocusable(true);
         addKeyListener(this);
         startGame();
+
+        
     }
 
     private void startGame() {
@@ -119,12 +123,17 @@ public class Snake extends JPanel implements KeyListener {
         int y = rand.nextInt( board_size);
         food = new Point(x, y);
     }
+// ---- la mise a jour ne fonctionne pas correctement a revoir -----
 
     private void gameOver() {
         running = false;
         int choice = JOptionPane.showConfirmDialog(this, "Game Over! Score: " + score + "\nVoulez-vous rejouer ?", "Fin de la partie", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
-            startGame();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    startGame();
+                }
+            });
         } else {
             System.exit(0);
         }

@@ -1,4 +1,4 @@
-package Jeux1;
+package Jeux_Java;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -39,9 +39,19 @@ public class Jeux1 {
         frame.add(panel);
 
         frame.pack();
-        frame.setSize(300, 300); 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        
+        ImageIcon img = new ImageIcon("./asset/image.png");
+        Image icon = img.getImage();
+        
+        
+        frame.setIconImage(icon);
+
         frame.setVisible(true);
+        frame.setTitle("Jeux du + ou - ");
+        frame.setSize(500, 400);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         int score = 0;
 
@@ -90,5 +100,9 @@ public class Jeux1 {
     private static void addActionListener(ActionListener actionListener) {
         throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
     }
-}
 
+    public void setVisible(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setVisible'");
+    }
+}

@@ -1,3 +1,4 @@
+package Jeux_Java;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,11 @@ public class TrueFalse extends JFrame implements ActionListener {
         position.gridx = 0;
         position.gridy = 0;
         position.anchor = GridBagConstraints.CENTER;
+
+        ImageIcon img = new ImageIcon("./asset/TrueFalse.png");
+        Image icon = img.getImage();
+      
+         setIconImage(icon);
 
         questionLabel = new JLabel(questions.get(currentQuestionIndex).getText());
         add(questionLabel, position);
