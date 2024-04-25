@@ -105,10 +105,10 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         addKeyListener(this);
         
-        backgroundImg = new ImageIcon(getClass().getResource("./Resource/flappybirdbg.png")).getImage();
-        birdImg = new ImageIcon(getClass().getResource("./Resource/flappybird.png")).getImage();
-        topPipeImg = new ImageIcon(getClass().getResource("./Resource/toppipe.png")).getImage();
-        bottomPipeImg = new ImageIcon(getClass().getResource("./Resource/bottompipe.png")).getImage();
+        backgroundImg = new ImageIcon(getClass().getResource("./Ressources/flappybirdbg.png")).getImage();
+        birdImg = new ImageIcon(getClass().getResource("./Ressources/flappybird.png")).getImage();
+        topPipeImg = new ImageIcon(getClass().getResource("./Ressources/toppipe.png")).getImage();
+        bottomPipeImg = new ImageIcon(getClass().getResource("./Ressources/bottompipe.png")).getImage();
 
         if (backgroundImg == null || birdImg == null || topPipeImg == null || bottomPipeImg == null) {
             throw new RuntimeException("Failed to load one or more images.");
