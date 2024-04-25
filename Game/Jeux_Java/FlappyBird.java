@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class FlappyBird extends JPanel implements ActionListener, KeyListener {
+public class FlappyBird extends JPanel implements ActionListener, KeyListener {    
     int boardWidth = 600;
     int boardHeight = 740;
     Image backgroundImg;
@@ -129,6 +129,19 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         gameLoop.start();  
 	}
 
+    private void startGame() {
+        JFrame frame = new JFrame("Flappy Bird");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Créez une nouvelle instance de FlappyBird
+        FlappyBird flappyBird = new FlappyBird();
+        
+        frame.add(flappyBird);
+        frame.pack();
+        flappyBird.requestFocus();
+        frame.setVisible(true);
+    }
+
     void placePipes() {
 
         int randomPipeY = (int) (pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2));
@@ -212,13 +225,10 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
                 placePipeTimer.stop();
                 int choice = JOptionPane.showConfirmDialog(this, "Game Over! Score: " + score + "\nVoulez-vous rejouer ?", "Fin de la partie", JOptionPane.YES_NO_OPTION);
                 if (choice == JOptionPane.YES_OPTION) {
-                    SwingUtilities.invokeLater(() -> {
-        
-                JFrame frame = new JFrame("Flappy Bird");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            });
-                    }
-            else {
+                    // Relancer le jeu lorsque l'utilisateur choisit de rejouer
+                    startGame();
+                }
+                else {
                     System.exit(0);
                 }
             }
@@ -227,7 +237,6 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
             }
         }
     }
-    
 
 @Override
 public void keyPressed(KeyEvent e) {
