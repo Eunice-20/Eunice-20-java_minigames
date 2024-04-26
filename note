@@ -1,0 +1,36 @@
+
+SHOW DATABASES;
+
+SELECT * FROM ma_table;
+SELECT * FROM ma_table; :
+Cette commande est une requête de sélection (SELECT) qui récupère toutes les lignes et toutes les colonnes de la table spécifiée (ma_table). Lorsque vous exécutez cette commande, MySQL retournera toutes les données stockées dans la table ma_table.
+
+data base 
+mysql> SHOW DATABASES;mysql> CREATE DATABASE database_DB;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| database_db        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+PS C:\Users\Usager\java-minigames> Copy-Item "C:\Program Files\Java\jdk-17\lib\jrt-fs.jar" ".\lib"
+
+ette commande utilise Copy-Item pour copier le fichier jrt-fs.jar dans le dossier lib que vous avez créé à la racine de votre projet
