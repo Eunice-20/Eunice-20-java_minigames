@@ -1,17 +1,46 @@
 package Jeux_Java;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.sql.*;
 
 public class Jeux1 {
+    static final String DB_URL = "jdbc:mysql://localhost:3306/database_db";
+    static final String USER = "eunice";
+    static final String PASS = "eunice";
+    private static Connection conn;
 
     public static void main(String[] args) {
         Jeux1();
     }
 
     public static void Jeux1() {
+
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            // Création de la table 
+            // try (PreparedStatement createTableStatement = conn.prepareStatement(createTableQuery)) {
+                //     createTableStatement.execute();
+                // } catch (SQLException e) {
+                    //     e.printStackTrace();
+                    // }
+                    // // Insertion du score dans la table
+                    // insererScore(conn, score);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+        }
+
+        // try {
+        //     Class.forName(JDBC_DRIVER);
+        // } catch (ClassNotFoundException e) {
+        //     e.printStackTrace();
+        //     return;
+        // }
+
+        
         Random rand = new Random();
         int randomNumber = rand.nextInt(1000) + 1;
         System.err.println(randomNumber);
@@ -40,11 +69,9 @@ public class Jeux1 {
 
         frame.pack();
 
-        
         ImageIcon img = new ImageIcon("./asset/image.png");
         Image icon = img.getImage();
-        
-        
+
         frame.setIconImage(icon);
 
         frame.setVisible(true);
@@ -55,29 +82,52 @@ public class Jeux1 {
 
         int score = 0;
 
-        leave.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                textField.setText("");
-            }
-        });
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS Jeux1 (id INT AUTO_INCREMENT PRIMARY KEY, score INT)";
+        
+            // btnD.addActionListener(new ActionListener() {
+        // public void actionPerformed(ActionEvent event) {
+            // try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            //     // Création de la table 
+            //     try (PreparedStatement createTableStatement = conn.prepareStatement(createTableQuery)) {
+            //         createTableStatement.execute();
+            //     } catch (SQLException e) {
+            //         e.printStackTrace();
+            //     }
+            //     // Insertion du score dans la table
+            //     insererScore(conn, score);
+            // } catch (SQLException e) {
+            //     e.printStackTrace();
+            // }
+        // }
+    // });
+        
+
+        
 
         btnD.addActionListener(new ActionListener() {
             int time = 0;
             int score = 0;
+        
             @Override
             public void actionPerformed(ActionEvent event) {
                 try {
                     int guess = Integer.parseInt(textField.getText());
-                    time ++;
-
-                    if ( time <= 3) {
+                    time++;
+        
+                    if (time <= 3) {
                         System.out.println("Nombre de l'utilisateur : " + guess);
-
+        
                         if (guess >= 1 && guess <= 1000) {
                             if (guess == randomNumber) {
-                            
-                                score += 2; 
+                                score += 2;
                                 JOptionPane.showMessageDialog(null, "Bravo ! Vous avez deviné le nombre secret ! Votre score est : " + score);
+                                
+                                // Ajout du score dans la base de données
+                                try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+                                    insererScore(conn, score);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
                             } else if (guess < randomNumber) {
                                 JOptionPane.showMessageDialog(null, "Le nombre secret est plus grand !");
                             } else {
@@ -89,7 +139,7 @@ public class Jeux1 {
                     } else {
                         JOptionPane.showMessageDialog(null, "Nombre maximum de tentatives atteint. Le nombre secret était " + randomNumber);
                     }
-
+        
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Veuillez saisir un nombre valide.");
                 }
@@ -97,12 +147,24 @@ public class Jeux1 {
         });
     }
 
-    private static void addActionListener(ActionListener actionListener) {
-        throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
-    }
-
-    public void setVisible(boolean b) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setVisible'");
+    public static void insererScore(Connection conn, int score) {
+        try {
+            String sql = "INSERT INTO scores (score) VALUES (?)"; // Requête d'insertion
+        
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                // Définir les valeurs des paramètres de la requête
+                pstmt.setInt(1, score);
+        
+                // Exécution de la requête d'insertion
+                int lignesModifiees = pstmt.executeUpdate();
+                if (lignesModifiees > 0) {
+                    System.out.println("Insertion réussie !");
+                } else {
+                    System.out.println("Erreur lors de l'insertion.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
