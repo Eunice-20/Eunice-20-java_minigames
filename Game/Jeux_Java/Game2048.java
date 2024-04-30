@@ -32,6 +32,10 @@ public class Game2048 extends JFrame implements KeyListener {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         addKeyListener(this);
+        ImageIcon img = new ImageIcon("./Game/asset/Nub.png");
+        Image icon = img.getImage();
+        setIconImage(icon);
+
 
         JPanel gamePanel = new JPanel(new GridLayout(GRID_SIZE, GRID_SIZE));
         gamePanel.setBackground(BACKGROUND_COLOR);
@@ -180,7 +184,9 @@ public class Game2048 extends JFrame implements KeyListener {
                     }
                 }
             }
-            System.arraycopy(newCol, 0, grid[:, j], 0, GRID_SIZE);
+            // System.arraycopy(newCol, 0, grid[:, j], 0, GRID_SIZE);
+            System.arraycopy(newCol, 0, grid[j], 0, GRID_SIZE);
+
         }
     }
 
