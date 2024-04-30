@@ -1,1 +1,1 @@
-# Eunice-20-java_minigames
+# java_minigames

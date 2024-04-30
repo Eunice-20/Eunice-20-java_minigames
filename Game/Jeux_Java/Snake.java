@@ -21,7 +21,9 @@ public class Snake extends JPanel implements KeyListener {
         if (choice == JOptionPane.YES_OPTION) {
             SwingUtilities.invokeLater(() -> {
                 JFrame frame = new JFrame("Snake Game");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                JFrame SnakeFrame = new JFrame();
+                SnakeFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                SnakeFrame.setVisible(false);
                 ImageIcon img = new ImageIcon("./asset/Snake_Game.png");
                 Image icon = img.getImage();
                 frame.setIconImage(icon);
@@ -29,11 +31,23 @@ public class Snake extends JPanel implements KeyListener {
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
+                // Ajoutez un gestionnaire d'événements pour la fermeture de la fenêtre
+                frame.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        super.windowClosing(e);
+                        frame.dispose(); // Ferme la fenêtre du jeu mais ne quitte pas l'application
+                    }
+                });
             });
         } else {
-            System.exit(0);
+            JFrame snakeFrame = new JFrame();
+            snakeFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            snakeFrame.setVisible(false);
         }
     }
+    
+    
     public Snake() {
         setPreferredSize(new Dimension( board_size * unit_size,  board_size * unit_size));
         setBackground(Color.WHITE);

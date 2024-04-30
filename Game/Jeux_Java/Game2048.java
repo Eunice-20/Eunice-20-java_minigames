@@ -27,7 +27,9 @@ public class Game2048 extends JFrame implements KeyListener {
     public Game2048() {
         setTitle("2048");
         setSize(GRID_SIZE * TILE_SIZE, GRID_SIZE * TILE_SIZE);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame Game2048Frame = new JFrame();
+        Game2048Frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        Game2048Frame.setVisible(false);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -64,6 +66,7 @@ public class Game2048 extends JFrame implements KeyListener {
         generateNewTile();
 
         setVisible(true);
+        
     }
 
     private void generateNewTile() {

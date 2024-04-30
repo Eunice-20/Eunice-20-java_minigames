@@ -60,7 +60,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     boolean gameOver = false;
     double score = 0;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int boardWidth = 360;
         int boardHeight = 640;
 
@@ -86,10 +86,20 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
                 frame.pack();
                 flappyBird.requestFocus();
                 frame.setVisible(true);
+                frame.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        super.windowClosing(e);
+                        frame.dispose(); // Ferme la fenêtre du jeu mais ne quitte pas l'application
+                    }
+                });
+        
             });
 
         } else {
-            System.exit(0);
+            JFrame FlappyBirdFrame = new JFrame();
+            FlappyBirdFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            FlappyBirdFrame.setVisible(false);
         }
     }
 

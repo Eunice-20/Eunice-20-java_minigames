@@ -40,7 +40,9 @@ public static void main(String[] args)
         label2.setBounds(20, 50, 400, 50);
 
         JFrame frame = new JFrame("+ ou -");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame gamepmpFrame = new JFrame();
+        gamepmpFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        gamepmpFrame.setVisible(false);
         frame.setSize(250, 250);
         frame.setLayout(null);
         frame.add(label);

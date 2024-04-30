@@ -32,12 +32,12 @@ public class memory extends JPanel implements ActionListener
     public static void main(String[] args)
     {
     JButton [] tabname = {
-        card = new JButton("./asset/Memory/1.png"), card2 = new JButton("./asset/Memory/1.png"),card3 = new JButton("./asset/Memory/2.png"),
-        card4 = new JButton("./asset/Memory/2.png"), card5 = new JButton("./asset/Memory/3.png"),card6 = new JButton("./asset/Memory/3.png"),
-        card7 = new JButton("./asset/Memory/4.png"), card8 = new JButton("./asset/Memory/4.png"),card9 = new JButton("./asset/Memory/5.png"),
-        card10 = new JButton("./asset/Memory/5.png"), card11 = new JButton("./asset/Memory/6.png"),card12 = new JButton("./asset/Memory/6.png"),
-        card13 = new JButton("./asset/Memory/7.png"), card14 = new JButton("./asset/Memory/7.png"),card15 = new JButton("./asset/Memory/8.png"),
-        card16 = new JButton("./asset/Memory/8.png"), card17 = new JButton("./asset/Memory/9.png"),card18 = new JButton("./asset/Memory/9.png"),
+        card = new JButton("./Game/asset/Memory/1.png"), card2 = new JButton("./Game/asset/Memory/1.png"),card3 = new JButton("./asset/Memory/2.png"),
+        card4 = new JButton("./Game/asset/Memory/2.png"), card5 = new JButton("./Game/asset/Memory/3.png"),card6 = new JButton("./asset/Memory/3.png"),
+        card7 = new JButton("./Game/asset/Memory/4.png"), card8 = new JButton("./Game/asset/Memory/4.png"),card9 = new JButton("./asset/Memory/5.png"),
+        card10 = new JButton("./Game/asset/Memory/5.png"), card11 = new JButton("./Game/asset/Memory/6.png"),card12 = new JButton("./asset/Memory/6.png"),
+        card13 = new JButton("./Game/asset/Memory/7.png"), card14 = new JButton("./Game/asset/Memory/7.png"),card15 = new JButton("./asset/Memory/8.png"),
+        card16 = new JButton("./Game/asset/Memory/8.png"), card17 = new JButton("./Game/asset/Memory/9.png"),card18 = new JButton("./asset/Memory/9.png"),
         card19 = new JButton(),
     };
     int x = 100;
@@ -69,7 +69,9 @@ public class memory extends JPanel implements ActionListener
       // card.setBorder(BorderFactory.createEmptyBorder());
       // card.setContentAreaFilled(false);
        // memory Bg = new memory();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       JFrame memoryFrame = new JFrame();
+       memoryFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+       memoryFrame.setVisible(false);
         frame.setSize(10, 10);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);

@@ -29,7 +29,9 @@
      public Hangman() {
          setTitle("Jeu du Hangman");
          setSize(400, 400);
-         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         JFrame HangmanFrame = new JFrame();
+         HangmanFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+         HangmanFrame.setVisible(false);         
          setLocationRelativeTo(null);
 
          initWords();

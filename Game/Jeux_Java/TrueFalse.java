@@ -40,7 +40,9 @@ public class TrueFalse extends JFrame implements ActionListener {
         score = 0;
 
         setTitle("Jeu Vrai ou Faux");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame TrueFalseFrame = new JFrame();
+        TrueFalseFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        TrueFalseFrame.setVisible(false);
         setSize(1300, 1300);
         setLayout(new GridBagLayout());
         GridBagConstraints position = new GridBagConstraints();

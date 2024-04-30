@@ -78,8 +78,9 @@ public class Jeux1 {
         frame.setTitle("Jeux du + ou - ");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        JFrame Jeux1Frame = new JFrame();
+        Jeux1Frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        Jeux1Frame.setVisible(false);
         int score = 0;
 
         String createTableQuery = "CREATE TABLE IF NOT EXISTS Jeux1 (id INT AUTO_INCREMENT PRIMARY KEY, score INT)";

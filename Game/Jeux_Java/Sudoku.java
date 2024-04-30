@@ -25,7 +25,9 @@ public class Sudoku extends JFrame {
     public Sudoku() {
         setTitle("Sudoku");
         setSize(400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame SudokuFrame = new JFrame();
+        SudokuFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        SudokuFrame.setVisible(false);
         ImageIcon img = new ImageIcon("./asset/Sudoku.png");
         Image icon = img.getImage();
         setIconImage(icon);
